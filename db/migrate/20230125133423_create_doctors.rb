@@ -5,8 +5,10 @@ class CreateDoctors < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :phone
       t.string :location
-      t.decimal :rates
+      t.decimal :rating
+      t.decimal :price
       t.string :specialization
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
