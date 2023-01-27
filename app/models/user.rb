@@ -1,4 +1,5 @@
 class User < ApplicationRecord
-  validates :name, presence: true
-  validates :email, presence: true
+  has_many :doctors
+  validates :name, :email, :encrypted_password, presence: true
+  validates :encrypted_password, length: { minimum: 6 }
 end
