@@ -7,7 +7,7 @@ RSpec.describe Booking, type: :model do
                         password_confirmation: '123456')
       @doctoro = Doctor.new(user_id: @usero.id, name: 'Rick', location: 'Ireland',
                             specialization: 'Pathologist', price: 400)
-      Booking.new(user_id: @usero.id, doctor_id: @doctoro.id, booking_date: '27-01-2023')
+      Booking.new(user_id: @usero.id, doctor_id: @doctoro.id, booking_date: '27-01-2023 12:40:00')
     end
 
     before { subject.save }
