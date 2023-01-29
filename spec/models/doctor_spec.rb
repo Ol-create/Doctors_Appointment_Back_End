@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Doctor, type: :model do
   describe 'validation tests' do
     subject do
-      @usero = User.new(name: 'Izumi', email: 'izumi@mail.com', encrypted_password: '123456')
+      @usero = User.new(name: 'Izumi', email: 'izumi@mail.com', password: '123456', password_confirmation: '123456')
       Doctor.new(user_id: @usero.id, name: 'Rick', location: 'Ireland', specialization: 'Pathologist', price: 400)
     end
     before { subject.save }

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.new(name: 'Nuk Tashino', email: 'nuk@tashino.com', encrypted_password: '123456') }
+  let(:user) { User.new(name: 'Nuk Tashino', email: 'nuk@tashino.com', password: '123456', password_confirmation: '123456') }
 
   it 'should be ok with valid attributes' do
     expect(user).to be_valid
@@ -18,11 +18,15 @@ RSpec.describe User, type: :model do
   end
 
   it 'should not be valid without password' do
-    user.encrypted_password = nil
+    user.password = nil
     expect(user).to_not be_valid
   end
 
   it 'should have password with 6 chars minimum' do
-    expect(user.encrypted_password.length).to be >= (6)
+    expect(user.password.length).to be >= (6)
+  end
+
+  it 'should have password_confirmation equal to password' do
+    expect(user.password).to eq(user.password_confirmation)
   end
 end
