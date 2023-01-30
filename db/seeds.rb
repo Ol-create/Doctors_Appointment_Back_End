@@ -5,4 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-@user1 = User.create(name: 'Luke', email: 'luke@skywalker.com')
+User.destroy_all
+Doctor.destroy_all
+Booking.destroy_all
+
+@user1 = User.create(name: 'Luke', email: 'luke@skywalker.com', password: '123456', password_confirmation: '123456', admin: false)
+@user2 = User.create(name: 'Obi-wan', email: 'obiwan@kenobi.com', password: '456789', password_confirmation: '456789', admin: true)
+
+@doctor1 = Doctor.create(user: @user1, name: 'Rick', location: 'Ireland', specialization: 'Pathologist', price: 400)
+
+@booking1 = Booking.create(user: @user2, doctor: @doctor1, booking_date: '30-01-2013 12:20:04')
