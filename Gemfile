@@ -9,8 +9,8 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.1'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'cancancan'
 gem 'devise'
-gem 'sprockets-rails'
 gem 'file_validators'
+gem 'sprockets-rails'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -47,8 +47,8 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
-gem 'jwt'
 gem 'devise-jwt'
+gem 'jwt'
 gem 'rack-cors'
 # Use Sass to process CSS
 # gem "sassc-rails"

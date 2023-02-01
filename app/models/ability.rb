@@ -34,7 +34,7 @@ class Ability
     if user.admin?
       can :manage, :all
     else
-      can :manage, Booking, user: user
+      can(:manage, Booking, user:)
       can :read, Doctor
     end
   end
