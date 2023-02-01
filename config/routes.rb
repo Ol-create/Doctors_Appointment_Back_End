@@ -1,16 +1,25 @@
 Rails.application.routes.draw do
-  # mount Rswag::Ui::Engine => '/api-docs'
-  # mount Rswag::Api::Engine => '/api-docs'
-  # devise_for :add_devise_to_users
+  devise_for :users, skip: %i[registrations sessions passwords]
+  devise_scope :user do
+    post 'users/sign_in', to: 'sessions#create', defaults: { format: :json }
+    delete 'users/sign_out', to: 'sessions#destroy', defaults: { format: :json }
+    post 'users/password', to: 'devise/passwords#create', defaults: { format: :json }
+    patch 'users/password', to: 'devise/passwords#update', defaults: { format: :json }
+    post 'users', to: 'registrations#create', defaults: { format: :json }
+    patch 'users', to: 'registrations#update', defaults: { format: :json }
+    delete 'users', to: 'registrations#destroy', defaults: { format: :json }
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # resources :bookings
+  # resources :doctors
+
+  namespace :api do
+    namespace :v1, defaults: { format: 'json' } do
+      resources :bookings, except: :show
+      resources :doctors
+    end
+  end
 
   # Defines the root path route ("/")
-  # root "articles#index"
-  # root "users#index"
-  resources :users, only: :index
-  resources :doctors, only: [:index, :show, :create]
-  resources :bookings, only: [:index, :show, :create, :destroy]
-  post "/signup", to: "users#create"
-  post "/login", to: "sessions#login"
-  post "/logout", to: "sessions#logout"
+  # root "doctors#index"
 end

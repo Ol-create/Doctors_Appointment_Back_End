@@ -1,20 +1,25 @@
-class SessionsController < ApplicationController
-  def login
-    user = User.find_by(email: params[:email])
-    if user&.authenticate(params[:password])
-      session[:id] = user.id
-      payload = { user_id: user.id }
-      token = encode_token(payload)
-      render json: { logged_in: true, user:, jwt: token, success: "Welcome back, #{user.name}" }
-    else
-      render json: { error: 'There was an error with your login, please check your Username and Password' }
-    end
+class SessionsController < Devise::SessionsController
+  def create
+    self.resource = warden.authenticate!(auth_options)
+    sign_in(resource_name, resource)
+    render json: { result: 'success', user: {
+      **resource.attributes
+        .except('encrypted_password', 'reset_password_token', 'reset_password_sent_at', 'remember_created_at'),
+      avatar: resource.avatar.present? ? url_for(resource.avatar) : nil
+    } }
   end
 
-  def logout
-    session.clear
-    render json: {
-      logged_in: false
-    }
+  def destroy
+    render json: { result: 'success' }
+  end
+
+  private
+
+  def verify_signed_out_user
+    missing_auth_token && return unless request.headers['Authorization'].present?
+  end
+
+  def missing_auth_token
+    render json: { result: 'failed', error: 'missing_auth_token' }, status: :unauthorized
   end
 end

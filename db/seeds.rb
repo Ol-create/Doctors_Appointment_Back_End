@@ -14,4 +14,4 @@ Booking.destroy_all
 
 @doctor1 = Doctor.create(user: @user1, name: 'Rick', location: 'Ireland', specialization: 'Pathologist', price: 400)
 
-@booking1 = Booking.create(user: @user2, doctor: @doctor1, booking_date: '30-01-2013 12:20:04')
+@booking1 = Booking.create(user: @user2, doctor: @doctor1, bookingdate: '30-01-2013 12:20:04')
