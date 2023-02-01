@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_01_012956) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "booking_date"
+    t.datetime "bookingdate"
     t.integer "duration"
     t.boolean "is_active"
     t.datetime "created_at", null: false
