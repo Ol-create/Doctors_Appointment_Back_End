@@ -3,10 +3,11 @@ class CreateDoctors < ActiveRecord::Migration[7.0]
     create_table :doctors do |t|
       t.string :name
       t.string :location
-      t.decimal :rating
-      t.decimal :price
+      t.string :phone
+      t.string :email
+      t.decimal :rates
       t.string :specialization
-      t.references :user, null: false, foreign_key: true
+      t.text :bio
 
       t.timestamps
     end
