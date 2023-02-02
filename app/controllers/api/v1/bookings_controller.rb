@@ -1,36 +1,39 @@
 class Api::V1::BookingsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[index create update destroy]
+  before_action :set_booking, only: %i[update destroy]
 
   def index
     bookings = current_user.bookings
-    render json: { bookings: }
+    render json: { bookings: }, status: :ok
   end
 
   def create
     booking = Booking.new(user: current_user, **booking_params)
     if booking.save
-      render json: { result: 'success', booking: }
+      render json: { result: 'success', booking: }, status: :created
     else
       render json: { result: 'failed', error: booking.errors }, status: :unprocessable_entity
     end
   end
 
   def update
-    booking = current_user.bookings.find(params[:id])
-    if booking.update(booking_params)
-      render json: { result: 'success', booking: }
+    if @booking.update(booking_params)
+      render json: { result: 'success', booking: @booking }, status: :ok
     else
-      render json: { result: 'failed', error: booking.errors }, status: :unprocessable_entity
+      render json: { result: 'failed', error: @booking.errors }, status: :unprocessable_entity
     end
   end
 
   def destroy
-    booking = current_user.bookings.find(params[:id])
-    booking.destroy
-    render json: { result: 'success' }
+    @booking.destroy
+    render json: { result: 'success' }, status: :ok
   end
 
   private
+
+  def set_booking
+    @booking = current_user.bookings.find(params[:id])
+  end
 
   def booking_params
     params.require(:booking).permit(:bookingdate, :is_active, :duration, :doctor_id)
