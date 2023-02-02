@@ -1,6 +1,7 @@
 class Api::V1::DoctorsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_actions
+  authorize_resource
+  skip_authorize_resource only: %i[index show]
 
   def index
     doctors = Doctor.all
@@ -41,8 +42,4 @@ class Api::V1::DoctorsController < ApplicationController
   def doctor_params
     params.require(:doctor).permit(:name, :phone, :email, :location, :rates, :bio, :avatar)
   end
-end
-
-def authorize_actions
-  authorize :doctors_controller, except: %i[index show]
 end
