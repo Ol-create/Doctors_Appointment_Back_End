@@ -139,8 +139,7 @@ The user then can modify and play with the files as needed
 👤 **Paul Oluyemi**
 
 - GitHub: [@Ol-create](https://github.com/Ol-create)
-- LinkedIn: [LinkedIn](update-link)
-
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/paul-oluyemi)
 👤 **Edith Oga**
 
 - GitHub: [@vigehi](https://github.com/vigehi)
