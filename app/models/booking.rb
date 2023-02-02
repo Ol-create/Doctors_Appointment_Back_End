@@ -4,5 +4,5 @@ class Booking < ApplicationRecord
 
   validates :bookingdate, presence: true
   validates :is_active, inclusion: [true, false]
-  validates :duration, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 8 }
+  validates :duration, comparison: { greater_than: 0, less_than: 8 }, numericality: { only_integer: true }
 end
