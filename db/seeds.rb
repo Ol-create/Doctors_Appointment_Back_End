@@ -9,9 +9,6 @@ User.destroy_all
 Doctor.destroy_all
 Booking.destroy_all
 
-@user1 = User.create(name: 'Luke', email: 'luke@skywalker.com', password: '123456', password_confirmation: '123456', admin: false)
-@user2 = User.create(name: 'Obi-wan', email: 'obiwan@kenobi.com', password: '456789', password_confirmation: '456789', admin: true)
-
-@doctor1 = Doctor.create(user: @user1, name: 'Rick', location: 'Ireland', specialization: 'Pathologist', price: 400)
-
-@booking1 = Booking.create(user: @user2, doctor: @doctor1, bookingdate: '30-01-2013 12:20:04')
+@user1 = User.create!(name: 'Luke', email: 'luke@skywalker.com', password: '123456', phone: '121212')
+@user2 = User.create!(name: 'Obi-wan', email: 'obiwan@kenobi.com', password: '456789', phone: '414141')
+@user3 = User.create!(name: 'Master Yoda', email: 'master@yoda.com', password: '12345678', phone: '424242', role: 'admin')
