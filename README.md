@@ -67,7 +67,9 @@
   </ul>
 </details>
 
-<!-- Features -->
+## Host link
+
+The backend is hosted in [onrender](https://doctor-appointment-api-u7q4.onrender.com)
 
 ### Key Features <a name="key-features"></a>
 
