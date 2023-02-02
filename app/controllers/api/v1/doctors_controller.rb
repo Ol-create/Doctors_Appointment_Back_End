@@ -1,16 +1,16 @@
 class Api::V1::DoctorsController < ApplicationController
   before_action :authenticate_user!
-  authorize_resource, except: %i[index show]
+  before_action :authorize_actions
 
   def index
     doctors = Doctor.all
-    render json: { doctors: doctors }
+    render json: { doctors: }
   end
 
   def create
     doctor = Doctor.new(doctor_params)
     if doctor.save
-      render json: { result: 'success', doctor: doctor }
+      render json: { result: 'success', doctor: }
     else
       render json: { result: 'failed', error: doctor.errors }, status: :unprocessable_entity
     end
@@ -19,7 +19,7 @@ class Api::V1::DoctorsController < ApplicationController
   def update
     doctor = Doctor.find(params[:id])
     if doctor.update(doctor_params)
-      render json: { result: 'success', doctor: doctor }
+      render json: { result: 'success', doctor: }
     else
       render json: { result: 'failed', error: doctor.errors }, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class Api::V1::DoctorsController < ApplicationController
 
   def show
     doctor = Doctor.find(params[:id])
-    render json: { doctor: doctor }
+    render json: { doctor: }
   end
 
   def destroy
@@ -41,4 +41,8 @@ class Api::V1::DoctorsController < ApplicationController
   def doctor_params
     params.require(:doctor).permit(:name, :phone, :email, :location, :rates, :bio, :avatar)
   end
+end
+
+def authorize_actions
+  authorize :doctors_controller, except: %i[index show]
 end

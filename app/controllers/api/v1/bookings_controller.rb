@@ -1,16 +1,16 @@
 class Api::V1::BookingsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create, :update, :destroy]
-  before_action :set_booking, only: [:update, :destroy]
+  before_action :authenticate_user!, only: %i[index create update destroy]
+  before_action :set_booking, only: %i[update destroy]
 
   def index
     bookings = current_user.bookings
-    render json: { bookings: bookings }, status: :ok
+    render json: { bookings: }, status: :ok
   end
 
   def create
     booking = Booking.new(user: current_user, **booking_params)
     if booking.save
-      render json: { result: 'success', booking: booking }, status: :created
+      render json: { result: 'success', booking: }, status: :created
     else
       render json: { result: 'failed', error: booking.errors }, status: :unprocessable_entity
     end
