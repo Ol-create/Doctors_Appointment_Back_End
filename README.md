@@ -144,6 +144,7 @@ The user then can modify and play with the files as needed
 
 - GitHub: [@vigehi](https://github.com/vigehi)
 - LinkedIn: [LinkedIn](update-link)
+- Twitter: [@BrendaWihogora](https://twitter.com/BrendaWihogora)
 
 👤 **Lucas Mullen**
 
