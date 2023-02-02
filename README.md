@@ -140,6 +140,7 @@ The user then can modify and play with the files as needed
 
 - GitHub: [@Ol-create](https://github.com/Ol-create)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/paul-oluyemi)
+
 👤 **Edith Oga**
 
 - GitHub: [@vigehi](https://github.com/vigehi)
