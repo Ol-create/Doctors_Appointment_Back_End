@@ -67,7 +67,7 @@
   </ul>
 </details>
 
-## Host link
+## Live demo - Hosting the backend
 
 The backend is hosted in [onrender](https://doctor-appointment-api-u7q4.onrender.com)
 
