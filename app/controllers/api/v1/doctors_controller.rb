@@ -1,17 +1,16 @@
 class Api::V1::DoctorsController < ApplicationController
   before_action :authenticate_user!
-  authorize_resource
-  skip_authorize_resource only: %i[index show]
+  authorize_resource, except: %i[index show]
 
   def index
     doctors = Doctor.all
-    render json: { doctors: }
+    render json: { doctors: doctors }
   end
 
   def create
     doctor = Doctor.new(doctor_params)
     if doctor.save
-      render json: { result: 'success', doctor: }
+      render json: { result: 'success', doctor: doctor }
     else
       render json: { result: 'failed', error: doctor.errors }, status: :unprocessable_entity
     end
@@ -20,7 +19,7 @@ class Api::V1::DoctorsController < ApplicationController
   def update
     doctor = Doctor.find(params[:id])
     if doctor.update(doctor_params)
-      render json: { result: 'success', doctor: }
+      render json: { result: 'success', doctor: doctor }
     else
       render json: { result: 'failed', error: doctor.errors }, status: :unprocessable_entity
     end
@@ -28,7 +27,7 @@ class Api::V1::DoctorsController < ApplicationController
 
   def show
     doctor = Doctor.find(params[:id])
-    render json: { doctor: }
+    render json: { doctor: doctor }
   end
 
   def destroy
