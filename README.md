@@ -128,6 +128,15 @@ To run the project, execute the following command:
   rails server
 ```
 
+- For testing this application, a `seed` has been provided
+
+The Admin username is:
+```
+username: admin
+password: 12345678
+
+```
+
 ### Testing
 
 To test and utilize the code, use the terminal and run ruby by inputting `irb` in the command line, or by using an extension in Visual Studio Code like _Code runner_
