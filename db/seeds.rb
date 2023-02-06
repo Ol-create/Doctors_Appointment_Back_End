@@ -17,19 +17,19 @@ Booking.destroy_all
 
 @userAdmin = User.create!(name: 'Admin', email: 'admin@gmail.com', password: '12345678', phone: '424242', role: 'admin')
 
-doctor1 = Doctor.new(name:"Doctor1",phone:'1274895',email:"doctor1@gmail.com",location:"Ireland",specialization: 'Occulist',rates:45,bio:"A very well educated doctor")
+doctor1 = Doctor.new(name:"Dr. House",phone:'1274895',email:"doctor1@gmail.com",location:"Ireland",specialization: 'Occulist',rates:45,bio:"A very well educated doctor")
 doctor1.avatar.attach(io: File.open('./app/assets/images/profile-pic.png'), filename: 'profile-pic.png')
 doctor1.save
 
-doctor2 = Doctor.new(name:"Doctor2",phone:123455,email:"doctor2@gmail.com",location:"Switzerland",specialization: 'Geneticist',rates: 48,bio:"A doctor form Havard")
+doctor2 = Doctor.new(name:"Rick",phone:123455,email:"doctor2@gmail.com",location:"Switzerland",specialization: 'Geneticist',rates: 48,bio:"A doctor form Havard")
 doctor2.avatar.attach(io: File.open('./app/assets/images/profile-pic.png'), filename: 'profile-pic.png')
 doctor2.save
 
-doctor3 = Doctor.new(name:"Doctor3",phone:123455,email:"doctor3@gmail.com",location:"Laos",specialization: 'Oncologist',rates:46,bio:"A  must see doctor")
+doctor3 = Doctor.new(name:"Dr Who",phone:123455,email:"doctor3@gmail.com",location:"Laos",specialization: 'Oncologist',rates:46,bio:"A  must see doctor")
 doctor3.avatar.attach(io: File.open('./app/assets/images/profile-pic.png'), filename: 'profile-pic.png')
 doctor3.save
 
-doctor4 = Doctor.new(name:"Doctor4",phone:123455,email:"doctor4@gmail.com",location:"Nairobi",specialization: 'Psycotherapist',rates:45,bio:"Nicest Doctor")
+doctor4 = Doctor.new(name:"Dr Dan",phone:123455,email:"doctor4@gmail.com",location:"Nairobi",specialization: 'Psycotherapist',rates:45,bio:"Nicest Doctor")
 doctor4.avatar.attach(io: File.open('./app/assets/images/profile-pic.png'), filename: 'profile-pic.png')
 doctor4.save
 
